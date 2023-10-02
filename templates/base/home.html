@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{%load static%}
+{% block content %}
+    <style>
+        /* Image occupe plus de place dans la carte */
+        .card-img-top {
+            height: 150px; /* Réglez la hauteur de l'image selon vos besoins */
+            object-fit: cover; /* Empêche le débordement de l'image */
+        }
+
+        /* Mettez en relief le titre */
+        .card-title {
+            font-weight: bold;
+        }
+    </style>
+<div class="container">
+    <h1 class="mt-5 mb-4">Fil d'actualité</h1>
+    <div class="row">
+    <!-- Boucle sur les actualités -->
+            {% for model in models %}
+        
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card animate__animated animate__fadeIn">
+                    <div class="card">
+                        <img src="{{model.image.url}}" alt="Image 1" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{model.name}}</h5>
+                            <p class="card-text">{{model.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {% endfor %} 
+            <!-- Ajoutez plus de cartes selon vos besoins -->
+        </div>
+    </div>
+
+    <!-- Ajoutez les fichiers JavaScript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+
+
+    
+    
+    <!-- Pagination -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if models.has_previous %}
+                <a href="?page=1">&laquo; premier</a>
+                <a href="?page={{ models.previous_page_number }}">précédent</a>
+            {% endif %}
+            
+            <span class="current-page">{{ models.number }}</span>
+            
+            {% if models.has_next %}
+                <a href="?page={{ models.next_page_number }}">suivant</a>
+                <a href="?page={{ models.paginator.num_pages }}">dernier &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}
