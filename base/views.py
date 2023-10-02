@@ -44,3 +44,7 @@ def create_model3d(request):
     return render(request, 'base/create_model3d.html', {'form': form})
 
 
+def detail_model(request,pk):
+    model = Model3D.objects.get(id=pk)
+    
+    return render(request, 'base/detail.html', {'model':model})
