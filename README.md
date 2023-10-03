@@ -1,5 +1,5 @@
 le projet est divisé en trois applications. 
-une application accounts : ayant pour role la gestion des utilisateurs , la logique pour l'attribution du badge collector ese trouve dans cette partie.
+une application accounts : ayant pour role la gestion des utilisateurs , la logique pour l'attribution du badge collector se trouve dans cette partie.
 une application base : ayant pour role la gestion de la logique du projet(affichage des modele3D, page de detail d'un modele et un formulaire de creation pour les model3D, attribution des badge pionneer et star)
 une application api : ayant pour role la gestion de la logique de l'api (liste des badges d'un utilisateur, liste de tout les badges)
 
