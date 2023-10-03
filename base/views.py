@@ -7,16 +7,10 @@ from base.badge_assigner import assign_pionneer_badge,assign_star_badge
 # Create your views here.
 def home(request):
     models = Model3D.objects.all().order_by('-created_at')
-    
-    for model in models:
-        model.increment_views()
-        
-    assign_star_badge()
     assign_pionneer_badge()
-    paginator = Paginator(models, 10)  # Montrez 10 actualités par page
+    paginator = Paginator(models, 10)  #  10 actualités par page
     page = request.GET.get('page')
     models = paginator.get_page(page)
-    
 
     context = {'models':models}
   
@@ -46,5 +40,9 @@ def create_model3d(request):
 
 def detail_model(request,pk):
     model = Model3D.objects.get(id=pk)
-    
-    return render(request, 'base/detail.html', {'model':model})
+    model.increment_views()
+    assign_star_badge()
+
+    context ={'model':model}
+
+    return render(request, 'base/detail.html',context )
