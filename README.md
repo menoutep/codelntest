@@ -8,6 +8,8 @@ Pour demarrer le projet :
 -telecharger le projet
 -installer django 4.2
 -installer django-rest-framework
+-python manage.py makemigrations
+-python manage.py migrate
 -python manage.py runserver pour lancer le projet
 -python manage.py test (pour lancer les test )
 j'ai utilisé une base donnée sqlite, pas donc de configuration requise au niveau de la bd.
